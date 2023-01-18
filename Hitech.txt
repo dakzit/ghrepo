@@ -1,0 +1,83 @@
+01/16/2022
+-----------
+
+Delete Branch:
+git branch -d <branch> # will delete branch locally
+
+git push –u origin <branch name> # To push any new branch to remote
+
+git push origin --delete <remoteBranchName> # will delete branch remotely
+
+Push Local Repository to GitHub:
+# Since we have already set up a local Git repo, we are going to push that to GitHub
+- Copy the URL & paste it in git shell
+$ git remote add origin <git repo URL>
+$ git push --set-upstream origin main 
+
+Edit Code in GitHub:
+We can edit the README.md file in GitHub, add some changes to the code, and then commit the changes.
+
+Git Pull from GitHub:
+Anytime team on a project, it is important that everyone stays up to date. We should get the most recent changes to your local copy.
+
+pull is a combination of 2 different commands;
+
+-fetch # fetch gets all the change history of a tracked branch/repo.
+$ git fetch origin
+$ git status # We would see we are behind the origin/master by 1 commit. This should be the updated README.md
+$ git log origin/main # To view the log
+
+-merge # merge combines the current branch, with a specified branch.
+$ git merge origin/main
+$ git status # Our local git should be up to date
+
+Git Pull:
+pull is a combination of fetch and merge. It is used to pull all changes from a remote repository into the branch you are working on.
+Let make changes to README.md in github
+$ git pull origin
+
+# That is how you keep your local Git up to date from a remote repository.
+
+Intro to database: mySQL:
+We all deal with data on a daily basis. 
+1. when we take a photo & upload it to our acct on a social media. FB, IG,
+2. A list of our favorite songs on our smartphone.
+3. when we browse an e-commerse to shop for stuffs.
+
+Database is merely an organized collection of structured information, or data that can be easily accessed, managed and updated.
+
+MYSQL:
+MySQL is an open-source relational database management system (RDBMS). It is released under an open-source license.
+
+To Uninstall myQSL:
+sudo apt-get purge --auto-remove mysql-server
+
+steps:
+Launch EC2 18.04 LTS instance in AWS
+$ sudo apt update
+$ sudo apt upgrade
+$ wget -c https://repo.mysql.com//mysql-apt-config_0.8.13-1_all.deb # download the repository package
+$ sudo dpkg -i mysql-apt-config_0.8.13-1_all.deb #  install the MySQL repository package 
+$ sudo apt-get install mysql-server # to start installing MySQL
+$ sudo mysql_secure_installation # to adjust security to the MySQL Server
+
+# It will prompt you some security options that you should choose in order to secure the MySQL server:
+Remove anonymous users? (Press y|Y for Yes, any other key for No) : y
+Disallow root login remotely? (Press y|Y for Yes, any other key for No) : y
+Remove test database and access to it? (Press y|Y for Yes, any other key for No) : y
+Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y
+sudo systemctl status mysql
+sudo systemctl enable mysql # start it automatically at system startup
+sudo systemctl status mysql # to check if is running
+$ mysql --version # to know which version of MySQL is installed
+
+Connect to MySQL server:
+sudo mysql -u root -p # It will prompt for the password of the root account.
+mysql>
+mysql> show databases; # to display all databases in the current server
+
+ Note: To clear out from the screen, use CTrl+L together
+
+ CREATE TABLE product (productID int, product_amount varchar(20), product_region varchar(20)); # To create a table
+
+ show columns from product; # This will show tables columns and its datatypes
